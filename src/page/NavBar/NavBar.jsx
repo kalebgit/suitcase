@@ -16,21 +16,25 @@ import './NavBar.scss';
 function NavBar({}){
     const [navClass, setNavClass] = useState("")
     const [isExpanded, setIsExpanded] = useState(false);
+    const [headerClass, setHeaderClass] = useState("")
 
     const menus = [
         {
             imageResource: Menu,
             altMessage: "menuDroppable",
             otherClassName: "md:hidden mr-auto",
-            handlerClick: ()=>{
+            handlerClick: (e)=>{
+                console.log(e);
+                e.preventDefault();
                 if(isExpanded == true){
                     setNavClass("h-0")
+                    setHeaderClass("h-16")
                     setIsExpanded(false);
                 }else{
+                    setHeaderClass("h-screen")
                     setNavClass("h-full")
                     setIsExpanded(true);
                 }
-                
             }
         },
         {
@@ -50,10 +54,6 @@ function NavBar({}){
 
 
     //styles
-    const headerStyle={
-        backgroundColor: "rgba(255, 255, 255, 0.1)",
-        backdropFilter: "blur(1rem)"
-    }
 
     const navStyle={
         transition: ".7s"
@@ -69,9 +69,8 @@ function NavBar({}){
     
     
     return(
-        <header className=" h-screen flex flex-col md:flex-row flex-nowrap justify-start 
-            md:justify-between md:items-center " 
-            style={headerStyle}>
+        <header className={"flex flex-col md:flex-row flex-nowrap justify-start" + 
+            "md:justify-between md:items-center " + headerClass}>
             <div className="h-16 p-3 border-b-2 flex flex-row flex-nowrap justify-end items-center 
             gap-5">
                 {menus.map((element, index)=><LinkImage key={index} {...element}/>)}
