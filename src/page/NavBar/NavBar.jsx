@@ -18,6 +18,19 @@ function NavBar({}){
     const [isExpanded, setIsExpanded] = useState(false);
     const [headerClass, setHeaderClass] = useState("")
 
+
+    const resetHeader = ()=>{
+        setNavClass("h-0")
+        setHeaderClass("h-16")
+        setIsExpanded(false);
+    }
+
+    const expandHeader = ()=>{
+        setHeaderClass("h-screen")
+        setNavClass("h-full")
+        setIsExpanded(true);
+    }
+
     const menus = [
         {
             imageResource: Menu,
@@ -27,13 +40,9 @@ function NavBar({}){
                 console.log(e);
                 e.preventDefault();
                 if(isExpanded == true){
-                    setNavClass("h-0")
-                    setHeaderClass("h-16")
-                    setIsExpanded(false);
+                    resetHeader()
                 }else{
-                    setHeaderClass("h-screen")
-                    setNavClass("h-full")
-                    setIsExpanded(true);
+                    expandHeader()
                 }
             }
         },
@@ -50,8 +59,22 @@ function NavBar({}){
     ]
 
     
-    const pages = ["Viajes", "Clima"]
+    const pages = [
+        {
+            title: "Store",
+            path: "/Store",
+        },                                      
+        {
+            title: "Promociones",
+            path: ""
+        }   
+    ]
 
+    
+
+    const handlerClickLinkPage = (e)=>{
+        resetHeader()
+    }
 
     //styles
 
@@ -69,20 +92,27 @@ function NavBar({}){
     
     
     return(
-        <header className={"flex flex-col md:flex-row flex-nowrap justify-start" + 
-            "md:justify-between md:items-center " + headerClass}>
-            <div className="h-16 p-3 border-b-2 flex flex-row flex-nowrap justify-end items-center 
-            gap-5">
-                {menus.map((element, index)=><LinkImage key={index} {...element}/>)}
-            </div>
-            <nav className={"h-0 overflow-hidden " + navClass} style={navStyle}>
-                <ul className="h-full flex md:flex-row flex-col flex-nowrap justify-start 
-                items-center ">
-                    {pages.map((element, index)=><li key={index} 
-                    className="h-1/6 flex justify-center items-center w-full hover:bg-gray-200
-                    NavBarLink"><LinkPage style={linkStyle} title={element} to/></li>)}
-                </ul>
-            </nav>
+        <header className={"sticky top-0 z-50 bg-white " + headerClass}>
+            <section className="h-full flex flex-col md:flex-row flex-nowrap justify-start 
+            md:justify-between md:items-center">
+                <div className="h-16 p-3 border-b-2 flex flex-row flex-nowrap justify-end items-center 
+                gap-5">
+                    {menus.map((element, index)=><LinkImage key={index} {...element}/>)}
+                </div>
+                <nav className={"h-0 overflow-hidden " + navClass} style={navStyle}>
+                    <ul className="h-full flex md:flex-row flex-col flex-nowrap justify-start 
+                    items-center ">
+                        {pages.map((element, index)=><LinkPage  key={index} style={linkStyle} 
+                            path={element.path}
+                            otherClassName="h-1/6 flex justify-center items-center w-full hover:bg-gray-200
+                            NavBarLink"
+                            handlerClick={handlerClickLinkPage}> 
+                            <li className="">{element.title}</li>
+                        </LinkPage>)}
+                    </ul>
+                </nav>
+            </section>
+            
         </header>
     )
 }

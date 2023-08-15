@@ -1,9 +1,10 @@
 import {Link} from 'react-router-dom'
 
 
-function LinkPage({title, otherClassName, style}){
+function LinkPage({otherClassName, style, path, children, handlerClick}){
     return (
-        <Link className={"" + otherClassName} style={style}>{title}</Link>
+        <Link className={"" + otherClassName} style={style} to={path} 
+        onClick={handlerClick} >{children}</Link>
     )
 }
 

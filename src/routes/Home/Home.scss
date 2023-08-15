@@ -1,0 +1,14 @@
+.home{
+
+    &__cardboard{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)),  
+        url("../../assets/img/home/background.jpg");
+        background-size: cover;
+        background-position: center;
+
+        &__image{
+            bottom: 0;
+            left: 0;
+        }
+    }
+}

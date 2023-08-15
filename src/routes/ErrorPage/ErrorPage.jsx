@@ -6,7 +6,7 @@ function ErrorPage(){
     console.error(error);
 
     return (
-        <main className="h-screen bg-no-repeat bg-cover flex flex-col justify-center
+        <main className="error-screen h-screen bg-no-repeat bg-cover flex flex-col justify-center
             items-center gap-5">
             <h1 className="text-white font-bold text-6xl">Oops!</h1>
             <p className="text-white font-medium text-xl">Este lugar es desconocido</p>
