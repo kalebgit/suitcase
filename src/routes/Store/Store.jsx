@@ -1,8 +1,9 @@
 
 function Store(){
     return (
-        <>
-        </>
+        <main>
+            
+        </main>
     )
 }
 
