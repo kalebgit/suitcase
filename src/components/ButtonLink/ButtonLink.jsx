@@ -1,12 +1,11 @@
 //components
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import Button from '../Button/Button'
 
-function ButtonLink({content, size}){
+function ButtonLink({type, content, otherClassName, path}){
     return (
-        <Link>
-            <button className={" bg-white w-max py-2 px-4 rounded-full font-bold " + size}>
-                {content}
-            </button>
+        <Link >
+            <Button content={content} otherClassName={otherClassName} type={type}/>
         </Link>
     )
 }

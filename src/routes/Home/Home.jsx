@@ -24,8 +24,10 @@ function Home(){
             hasImage: false,
             hasButton: true,
             button: {
+                type: "button",
                 content: "Ver mas",
-                size: "text-xl",
+                otherClassName: " bg-white text-xl",
+                path: "",
             }
         }
     ]
