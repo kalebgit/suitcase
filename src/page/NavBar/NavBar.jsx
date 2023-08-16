@@ -70,7 +70,11 @@ function NavBar({cart}){
         {
             title: "Promociones",
             path: ""
-        }   
+        },
+        {
+            title: "Prueba",
+            path: "/test"
+        }
     ]
 
     

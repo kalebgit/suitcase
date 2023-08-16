@@ -6,6 +6,7 @@ import Root from './routes/Root/Root'
 import Home from './routes/Home/Home'
 import Store from './routes/Store/Store'
 import Cart from './routes/Cart/Cart'
+import Test from './routes/Test/Test'
 import ErrorPage from './routes/ErrorPage/ErrorPage'
 import {Loader} from './routes/Loader/Loader'
 import './index.scss'
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart/>
+      },
+      {
+        path: "/test",
+        element: <Test/>
       }
     ]
   }
