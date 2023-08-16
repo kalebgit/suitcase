@@ -3,12 +3,13 @@
 import NavBar from '../../page/NavBar/NavBar'
 import Footer from '../../page/Footer/Footer'
 import {Outlet} from 'react-router-dom'
+import {useState} from 'react'
 function Root(){
-    
+    const [cart, setCart] = useState(new Array());
     return (
         <>
-            <NavBar/>
-            <Outlet/>
+            <NavBar cart={{cart, setCart}}/>
+            <Outlet cart={{cart, setCart}}/>
             <Footer/>
         </>
     )

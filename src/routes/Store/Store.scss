@@ -1,16 +1,13 @@
+.addProduct{
+    box-shadow: 0 0 2rem 1rem rgba(255, 255, 255, 0.4) inset, 
+    .5rem .5rem 1rem .5rem rgba(255, 255, 255, 0.5) inset,
+    .5rem .5rem .4rem 0 rgba(0, 0, 0, .15);
 
+    &__input{
+        box-shadow: 0 0 1rem .3rem rgba(0, 0, 0, 0.15) inset;
+    }
 
-.label-bar{
-    bottom: 40%;
-    pointer-events: none;
-    transition: .5s;
-}
-
-.input-bar{
-    &:focus + .label-bar,
-    &:valid + .label-bar{
-        bottom: 65%;
-        left: 0;
-        transform: scale(.9);
+    &__button{
+        box-shadow: -.5rem -.5rem 1rem 0 rgba(0, 0, 0, 0.25) inset;
     }
 }

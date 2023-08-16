@@ -5,7 +5,9 @@ import Welcome from './routes/Welcome/Welcome'
 import Root from './routes/Root/Root'
 import Home from './routes/Home/Home'
 import Store from './routes/Store/Store'
+import Cart from './routes/Cart/Cart'
 import ErrorPage from './routes/ErrorPage/ErrorPage'
+import {Loader} from './routes/Loader/Loader'
 import './index.scss'
 
 const router = createBrowserRouter([
@@ -14,6 +16,7 @@ const router = createBrowserRouter([
     element: <Root/>,
     // loader: rootLoader
     errorElement: <ErrorPage/>,
+    loader: Loader,
     children: [
       {
         path: "/",
@@ -23,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/store",
         element: <Store/>
+      },
+      {
+        path: "/cart",
+        element: <Cart/>
       }
     ]
   }

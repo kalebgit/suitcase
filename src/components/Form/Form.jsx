@@ -1,10 +1,10 @@
 // import useState from 'react';
 
-function Form({title, children, otherClassName}){
+function Form({title, children, fieldsetClass, formClass, legendClass}){
     return (
-        <form className="">
-            <fieldset className={` ${otherClassName}`}>
-                <legend className="">title</legend>
+        <form className={" " + formClass}>
+            <fieldset className={" " + fieldsetClass}>
+                <legend className={"text-center mb-5 " + legendClass}>{title}</legend>
                 {children}
             </fieldset>
         </form>

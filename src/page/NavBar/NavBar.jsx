@@ -13,7 +13,7 @@ import {useState} from 'react'
 //styles
 import './NavBar.scss';
 
-function NavBar({}){
+function NavBar({cart}){
     const [navClass, setNavClass] = useState("")
     const [isExpanded, setIsExpanded] = useState(false);
     const [headerClass, setHeaderClass] = useState("")
@@ -54,7 +54,10 @@ function NavBar({}){
         {
             imageResource: Cart,
             altMessage: "Carrito de Compras",
-            otherClassName: ""
+            otherClassName: "",
+            isCart: true,
+            cart: cart.cart,
+            path: "/cart"
         }
     ]
 
