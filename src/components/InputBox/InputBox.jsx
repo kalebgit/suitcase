@@ -16,17 +16,19 @@ function InputBox({type, labelText, options, boxClass, inputClass, labelClass, i
                 </div> 
             : type == "date" ?
                 <div className={"relative flex flex-row justify-start items-center gap-2 " + boxClass}>
-                    <input type="date" value={getTodayDate} className={"order-2 " + inputClass} readOnly/>
+                    <input type="date" value={getTodayDate} className={"order-2 " + inputClass} 
+                        readOnly/>
                     <label className={" order-1 " + labelClass}>{labelText}</label>
                 </div> 
             : type == "number" ? 
                 <div className={"relative flex flex-row justify-start items-center gap-2 " + boxClass}>
-                    <input type="number" min="1" step="1" className={"order-2 w-24 p-2 " + inputClass} id={id} onChange={onChangeHandler} required/>
+                    <input type="number" min="1" step="1" className={"order-2 w-24 p-2 " + inputClass} 
+                        id={id} onChange={onChangeHandler} required/>
                     <label className={" order-1 " + labelClass}>{labelText}</label>
                 </div>
             : type == "select" ?
                 <div className={"relative flex flex-row justify-start items-center gap-2 " + boxClass}>
-                    <select className={"order-2 " + inputClass}>
+                    <select className={"order-2 " + inputClass} onChange={onChangeHandler} id={id}>
                         {options.map((element, index)=><option key={index} value={element.value}>
                             {element.optionText}</option>)}
                     </select>

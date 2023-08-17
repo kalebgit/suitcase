@@ -1,9 +1,9 @@
 
 
-function Button({type, content, otherClassName, clickHandler}){
+function Button({type, content, otherClassName, clickHandler, onSubmit}){
     return(
         <button type={type} className={"w-max py-2 px-4 rounded-full font-bold " + otherClassName}
-        onClick={clickHandler}>
+        onClick={clickHandler} onSubmit={onSubmit}>
             {content}</button>
     )
 }

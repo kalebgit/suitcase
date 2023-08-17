@@ -13,7 +13,7 @@ import './Store.scss'
 import LoadingCat from '../../assets/img/store/loading-cat.gif'
 
 function Store({cart}){
-
+    const [isClickedAddProduct, setIsClickedAddProduct] = useState(false);
     const [products, setProducts] = useState(new Array());
     const [newProduct, setNewProduct] = useState({
         id: 0, 
@@ -109,13 +109,25 @@ function Store({cart}){
         }
         console.log(newProduct);
     }
+
+    
+    const submitHandler = (productToAdd)=>{
+        const array = [{
+            ...productToAdd,
+            id: Math.floor(((Math.random() + 1) * 10))
+        }]
+        setProducts(
+            (prevState)=>{
+                return [...array, ...prevState];
+            }
+        )
+    }
+
     
 
-    const [isClickedAddProduct, setIsClickedAddProduct] = useState(false);
-
-    const categories = [{value: "", optionText: "Ropa"}, {value: "", optionText: "Electronicos"}, 
-    {value: "", optionText: "Musica"}, {value: "", optionText: "Calzado"}, 
-    {value: "", optionText: "Otro"}]
+    const categories = [{value: "clothes", optionText: "Ropa"}, {value: "electronics", optionText: "Electronicos"}, 
+    {value: "music", optionText: "Musica"}, {value: "shoes", optionText: "Calzado"}, 
+    {value: "other", optionText: "Otro"}]
 
     const addProductClickHanlder = ()=>{
         if(isClickedAddProduct){
@@ -142,7 +154,11 @@ function Store({cart}){
                 {isClickedAddProduct ? 
                 <Form title="Agregar Producto" formClass="addProduct p-8 bg-amber-500 rounded-lg" 
                 fieldsetClass="flex flex-col flex-nowrap justify-start gap-8" 
-                legendClass="font-bold text-2xl text-slate-200">
+                legendClass="font-bold text-2xl text-slate-200"
+                onSubmit={(e)=>{
+                    e.preventDefault();
+                    submitHandler(newProduct);
+                }}>
                     <InputBox type="plaintext" labelText="Nombre Producto:" labelClass="text-slate-200" 
                     boxClass="bg-amber-500 rounded-lg addProduct__input" id="title"
                     onChangeHandler={(event)=>{changeFormProductHandler(event.target)}}/>
@@ -156,7 +172,8 @@ function Store({cart}){
                     inputClass="addProduct__input outline-none bg-amber-500 rounded-lg text-slate-200
                     p-1" id="category"
                     options={categories}
-                    onChangeHandler={(event)=>{changeFormProductHandler(event.target)}}/>
+                    onChangeHandler={(event)=>{console.log(event) 
+                    changeFormProductHandler(event.target)}}/>
                     <InputBox type="url" labelText="Url imagen del producto:" labelClass="text-slate-200" 
                     boxClass="bg-amber-500 rounded-lg addProduct__input" id="image"
                     onChangeHandler={(event)=>{changeFormProductHandler(event.target)}}/>
