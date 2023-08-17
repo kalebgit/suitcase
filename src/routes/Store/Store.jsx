@@ -15,7 +15,15 @@ import LoadingCat from '../../assets/img/store/loading-cat.gif'
 function Store({cart}){
 
     const [products, setProducts] = useState(new Array());
-
+    const [newProduct, setNewProduct] = useState({
+        id: 0, 
+        title: '', 
+        price: 0, 
+        description: '', 
+        category: '', 
+        image: ''
+    });
+    
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
         .then((response)=>{
@@ -34,6 +42,72 @@ function Store({cart}){
         cart.setCart(cart.cart.push({id: id, title: title, price: price, description: description, 
             category: category, image: image}));
         console.log(cart.cart)
+    }
+
+    const changeFormProductHandler = ({id, value})=>{
+        switch(id){
+            case 'id':
+                setNewProduct(
+                    (prevState)=>{
+                        return {
+                            ...prevState,
+                            id: value
+                        }
+                    }
+                )
+                break;
+            case 'title':
+                setNewProduct(
+                    (prevState)=>{
+                        return {
+                            ...prevState,
+                            title: value
+                        }
+                    }
+                )
+                break;
+            case 'price':
+                setNewProduct(
+                    (prevState)=>{
+                        return {
+                            ...prevState,
+                            price: value
+                        }
+                    }
+                )
+                break;
+            case 'description':
+                setNewProduct(
+                    (prevState)=>{
+                        return {
+                            ...prevState,
+                            description: value
+                        }
+                    }
+                )
+                break;
+            case 'category':
+                setNewProduct(
+                    (prevState)=>{
+                        return {
+                            ...prevState,
+                            category: value
+                        }
+                    }
+                )
+                break;
+            case 'image':
+                setNewProduct(
+                    (prevState)=>{
+                        return {
+                            ...prevState,
+                            image: value
+                        }
+                    }
+                )
+                break;
+        }
+        console.log(newProduct);
     }
     
 
@@ -70,17 +144,24 @@ function Store({cart}){
                 fieldsetClass="flex flex-col flex-nowrap justify-start gap-8" 
                 legendClass="font-bold text-2xl text-slate-200">
                     <InputBox type="plaintext" labelText="Nombre Producto:" labelClass="text-slate-200" 
-                    boxClass="bg-amber-500 rounded-lg addProduct__input"/>
+                    boxClass="bg-amber-500 rounded-lg addProduct__input" id="title"
+                    onChangeHandler={(event)=>{changeFormProductHandler(event.target)}}/>
                     <InputBox type="number" labelText="Precio: $" inputClass="addProduct__input
-                        outline-none bg-amber-500 rounded-lg" labelClass="text-slate-200" />
+                        outline-none bg-amber-500 rounded-lg" labelClass="text-slate-200" id="price" 
+                        onChangeHandler={(event)=>{changeFormProductHandler(event.target)}}/>
                     <InputBox type="plaintext" labelText="Descripcion:" labelClass="text-slate-200" 
-                    boxClass="bg-amber-500 rounded-lg addProduct__input"/>
+                    boxClass="bg-amber-500 rounded-lg addProduct__input" id="description"
+                    onChangeHandler={(event)=>{changeFormProductHandler(event.target)}}/>
                     <InputBox type="select" labelText="Categoria:" labelClass="text-slate-200" 
                     inputClass="addProduct__input outline-none bg-amber-500 rounded-lg text-slate-200
-                    p-1"
-                    options={categories}/>
+                    p-1" id="category"
+                    options={categories}
+                    onChangeHandler={(event)=>{changeFormProductHandler(event.target)}}/>
+                    <InputBox type="url" labelText="Url imagen del producto:" labelClass="text-slate-200" 
+                    boxClass="bg-amber-500 rounded-lg addProduct__input" id="image"
+                    onChangeHandler={(event)=>{changeFormProductHandler(event.target)}}/>
                     {/* <InputBox type="file" labelText=""/> */}
-                    <Button type="button" content="Agregar" otherClassName="addProduct__button 
+                    <Button type="submit" content="Agregar" otherClassName="addProduct__button 
                     bg-violet-50 text-lg" />
                 </Form>
                 : <></>}
