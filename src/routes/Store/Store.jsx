@@ -5,12 +5,12 @@ import Form from '../../components/Forms/Form/Form'
 import InputBox from '../../components/Forms/InputBox/InputBox'
 import {useLoaderData} from 'react-router-dom'
 import Product from '../../components/Product/Product'
+import Loader from  '../Loader/Loader'
 
 //styles
 import './Store.scss'
 
-//images
-import LoadingCat from '../../assets/img/store/loading-cat.gif'
+
 
 function Store({cart}){
     const [isClickedAddProduct, setIsClickedAddProduct] = useState(false);
@@ -188,7 +188,8 @@ function Store({cart}){
                 {products.length > 0 ? products.map((element, index)=><Product key={index} 
                 {...element} clickHandler={addCartProduct}/>) : 
                 
-                    <img src={LoadingCat} alt="cargando" className="absolute"/>}
+                <Loader/>}
+                    
             </section>
         </main>
     )

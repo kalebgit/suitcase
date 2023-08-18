@@ -1,6 +1,12 @@
 
+//images
+import LoadingCat from '../../assets/img/store/loading-cat.gif'
 
-export async function Loader(){
-    return 0;
+function Loader(){
+    return (
+        <img src={LoadingCat} alt="cargando" className="absolute"/>
+    )
 }
+
+export default Loader;
 

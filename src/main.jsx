@@ -9,7 +9,7 @@ import Cart from './routes/Cart/Cart'
 import Test from './routes/Test/Test'
 import Data from './routes/Data/Data'
 import ErrorPage from './routes/ErrorPage/ErrorPage'
-import {Loader} from './routes/Loader/Loader'
+
 import './index.scss'
 
 const router = createBrowserRouter([
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     element: <Root/>,
     // loader: rootLoader
     errorElement: <ErrorPage/>,
-    loader: Loader,
+    // loader: Loader,
     children: [
       {
         path: "/",
