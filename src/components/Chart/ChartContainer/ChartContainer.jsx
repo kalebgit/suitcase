@@ -1,8 +1,8 @@
 
 
-function ChartContainer({children, numberBars}){
+function ChartContainer({children}){
     return (
-        <section className=" columns-2 flex flex-row flex-nowrap justify-center items-center">
+        <section className="w-full columns-3 flex flex-row  flex-wrap justify-center items-center">
             {children}
         </section>
     )
