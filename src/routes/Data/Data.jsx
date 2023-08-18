@@ -11,7 +11,10 @@ function Data(){
         {optionText: "Mejor Valorados", value: "rated"}, 
         {optionText: "Mas vendidos", value: "sale"}
     ]
+    const [hasValue, setHasValue] = useState(false);
     
+
+    let chart = <Loader/>
 
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
@@ -22,7 +25,7 @@ function Data(){
             setSales(data);
             setSales((prevState)=>{
                 let object = prevState.map(({id, title, category, rating})=>{
-                    return {id: id, label: id, category: category, rating: rating, 
+                    return {id: id, label: formatString(title), category: category, rating: rating, 
                         sales: Math.floor((Math.random() * (500 - 1) + 1))}
                 })
                 console.log(object)
@@ -33,6 +36,10 @@ function Data(){
             console.log(err)
         })
     }, [])
+
+    const formatString = (text)=>{
+        return text.slice(0, 14) + "..."
+    }
 
     const changeHandler =(value)=>{
         switch(value){
@@ -58,6 +65,7 @@ function Data(){
                     })
                 })
                 setMaxValue(getMaxValue(sales.map((element)=>element.rating.rate)))
+                setHasValue(true);
                 break;
             case "sale": 
                 setSales((prevState)=>{
@@ -81,8 +89,11 @@ function Data(){
                     })
                 })
                 setMaxValue(getMaxValue(sales.map((element)=>element.sales)))
+                setHasValue(true);
+                break;
             default:
-                
+                setHasValue(false);
+                break;
         }
     }
 
@@ -130,7 +141,7 @@ function Data(){
     // }
     
     return (
-        <main className="p-5">
+        <main className="p-5 flex flex-col justify-start gap-10">
             <FilterContainer filterOptions={filterOptions} title="Graficas de Productos"
                 formClass="bg-gray-200 rounded-lg p-4"
                 legendClass="text-xl font-bold"
@@ -138,15 +149,15 @@ function Data(){
                 inputClass="rounded-md" 
                 labelClass=""
                 onChangeHandler={(e)=>{changeHandler(e.target.value)}}/>
-            {sales.length === 0 && <Loader/>}
-            {sales.length > 0 && 
+            {sales.length === 0 ? <Loader/> : 
+            hasValue ? 
             <ChartContainer>
                 {sales.map((element)=>{
                     return <ChartBar key={element.id} {...element} maxValue={maxValue} color={setBg()}/>
                 }
                 )}
-            </ChartContainer>
-            }
+            </ChartContainer> : 
+            <p className="text-center pt-5 font-bold text-xl">Elige una opcion... 😀</p>}
         </main>
     )
 }
