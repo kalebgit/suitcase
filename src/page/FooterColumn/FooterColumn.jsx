@@ -1,4 +1,4 @@
-import LinkImage from '../../components/LinkImage/LinkImage'
+import LinkImage from '../../components/Links/LinkImage/LinkImage'
 
 
 function FooterColumn({title, text, images}){

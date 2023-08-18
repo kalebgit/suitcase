@@ -1,4 +1,4 @@
-import Button from '../Button/Button'
+import Button from '../Buttons/Button/Button'
 
 import './Product.scss'
 

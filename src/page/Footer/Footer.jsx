@@ -4,7 +4,7 @@ import Facebook from '../../assets/img/gen/facebook.png'
 import Instagram from '../../assets/img/gen/instagram.png'
 
 //components
-import FooterColumn from '../../components/FooterColumn/FooterColumn';
+import FooterColumn from '../FooterColumn/FooterColumn';
 
 function Footer(){
 

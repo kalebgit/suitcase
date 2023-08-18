@@ -1,4 +1,4 @@
-import ButtonLink from '../ButtonLink/ButtonLink'
+import ButtonLink from '../Buttons/ButtonLink/ButtonLink'
 
 function CardBoard({title, titleSize,  content, contentStyle, hasImage, image, className, 
     hasButton, button}){

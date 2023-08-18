@@ -1,5 +1,5 @@
-import Form from '../../components/Form/Form'
-import InputBox from '../../components/InputBox/InputBox'
+import Form from '../../components/Forms/Form/Form'
+import InputBox from '../../components/Forms/InputBox/InputBox'
 import {useState} from 'react'
 
 function Test(){
@@ -11,7 +11,7 @@ function Test(){
 
     return (
         <main>
-            <Form formClass="bg-slate-200 p-4">
+            {/* <Form formClass="bg-slate-200 p-4">
                 <InputBox type="plaintext" labelText="Ingresa lo que quieras" boxClass="bg-slate-400" 
                     onChangeHandler ={changeHandler}/>
             </Form>
@@ -20,7 +20,7 @@ function Test(){
             <>
                 <h1>Escribiste: </h1>
                 <p>{inputText}</p>
-            </> : <></>}
+            </> : <></>} */}
             
         </main>
     )

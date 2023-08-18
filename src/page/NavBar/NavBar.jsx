@@ -4,8 +4,8 @@ import Account from '../../assets/img/gen/profile.png'
 import Cart from '../../assets/img/gen/cart.png'
 
 //components
-import LinkPage from '../../components/LinkPage/LinkPage'
-import LinkImage from '../../components/LinkImage/LinkImage'
+import LinkPage from '../../components/Links/LinkPage/LinkPage'
+import LinkImage from '../../components/Links/LinkImage/LinkImage'
 
 //hooks
 import {useState} from 'react'
@@ -13,7 +13,7 @@ import {useState} from 'react'
 //styles
 import './NavBar.scss';
 
-function NavBar({cart}){
+function NavBar({}){
     const [navClass, setNavClass] = useState("")
     const [isExpanded, setIsExpanded] = useState(false);
     const [headerClass, setHeaderClass] = useState("")
@@ -55,8 +55,8 @@ function NavBar({cart}){
             imageResource: Cart,
             altMessage: "Carrito de Compras",
             otherClassName: "",
-            isCart: true,
-            cart: cart.cart,
+            // isCart: true,
+            // cart: cart.cart,
             path: "/cart"
         }
     ]
@@ -68,9 +68,14 @@ function NavBar({cart}){
             path: "/Store",
         },                                      
         {
+            title: "data",
+            path: "/data"
+        },
+        {
             title: "Promociones",
             path: ""
         },
+        
         {
             title: "Prueba",
             path: "/test"

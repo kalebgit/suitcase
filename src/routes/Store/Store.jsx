@@ -1,8 +1,8 @@
 //components
 import {useState, useEffect} from 'react'
-import Button from '../../components/Button/Button'
-import Form from '../../components/Form/Form'
-import InputBox from '../../components/InputBox/InputBox'
+import Button from '../../components/Buttons/Button/Button'
+import Form from '../../components/Forms/Form/Form'
+import InputBox from '../../components/Forms/InputBox/InputBox'
 import {useLoaderData} from 'react-router-dom'
 import Product from '../../components/Product/Product'
 
