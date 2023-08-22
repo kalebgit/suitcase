@@ -15,6 +15,9 @@ import './Store.scss'
 function Store({cart}){
     const [isClickedAddProduct, setIsClickedAddProduct] = useState(false);
     const [products, setProducts] = useState(new Array());
+    const [alert, setAlert] = useState(<></>);
+    const [showAlert, setShowAlert] = useState(false);
+    const [deleteAlert, setDeleteAlert] = useState(false);
     const [newProduct, setNewProduct] = useState({
         id: 0, 
         title: '', 
@@ -39,9 +42,21 @@ function Store({cart}){
     
 
     const addCartProduct = (e)=>{
-        cart.setCart(cart.cart.push({id: id, title: title, price: price, description: description, 
-            category: category, image: image}));
-        console.log(cart.cart)
+        // cart.setCart(cart.cart.push({id: id, title: title, price: price, description: description, 
+        //     category: category, image: image}));
+        // console.log(cart.cart)
+
+        setAlert(<Alert className={`${showAlert ? 'alert-fade' : ''} 
+            ${deleteAlert ? 'alert-delete' : ''}`}>
+            Producto Agregado</Alert>);
+        setShowAlert(true);
+        setTimeout(()=>{
+            setDeleteAlert(true)
+            setTimeout(() => {
+                setAlert(<></>)
+            }, 2000);
+        }, 3000)
+
     }
 
     const changeFormProductHandler = ({id, value})=>{
@@ -147,7 +162,8 @@ function Store({cart}){
     
 
     return (
-        <main className=" min-h-screen">
+        <main className=" min-h-screen" id="store-main">
+            
             <section className=" p-4 flex flex-col flex-nowrap jusitfy-center gap-10">
                 <Button type="button" content="Agregar Producto" otherClassName=" bg-purple-200"
                 clickHandler={addProductClickHanlder}/>
@@ -189,7 +205,7 @@ function Store({cart}){
                 {...element} clickHandler={addCartProduct}/>) : 
                 
                 <Loader/>}
-                    
+                
             </section>
         </main>
     )
