@@ -1,5 +1,6 @@
 //components
 import {useState, useEffect} from 'react'
+import ReactDOM from 'react-dom'
 import Button from '../../components/Buttons/Button/Button'
 import Form from '../../components/Forms/Form/Form'
 import InputBox from '../../components/Forms/InputBox/InputBox'
@@ -49,6 +50,7 @@ function Store({cart}){
         setAlert(<Alert className={`${showAlert ? 'alert-fade' : ''} 
             ${deleteAlert ? 'alert-delete' : ''}`}>
             Producto Agregado</Alert>);
+        ReactDOM.createPortal(alert, document.getElementById("store-main"));
         setShowAlert(true);
         setTimeout(()=>{
             setDeleteAlert(true)
