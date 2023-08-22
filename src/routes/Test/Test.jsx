@@ -1,4 +1,5 @@
 import Form from '../../components/Forms/Form/Form'
+import Alert from '../../components/Alert/Alert'
 import InputBox from '../../components/Forms/InputBox/InputBox'
 import {useState} from 'react'
 
@@ -10,7 +11,7 @@ function Test(){
     }
 
     return (
-        <main>
+        <main className="relative min-h-screen">
             {/* <Form formClass="bg-slate-200 p-4">
                 <InputBox type="plaintext" labelText="Ingresa lo que quieras" boxClass="bg-slate-400" 
                     onChangeHandler ={changeHandler}/>
@@ -21,7 +22,7 @@ function Test(){
                 <h1>Escribiste: </h1>
                 <p>{inputText}</p>
             </> : <></>} */}
-            
+            <Alert>Producto agregado</Alert>
         </main>
     )
 }

@@ -1,0 +1,9 @@
+.alert{
+    left: 130%;
+    opacity: 0;
+    transition: .5s;
+    &-fade{
+        opacity: 1;
+        right: 0%;
+    }
+}
