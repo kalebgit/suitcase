@@ -7,6 +7,7 @@ import InputBox from '../../components/Forms/InputBox/InputBox'
 import {useLoaderData} from 'react-router-dom'
 import Product from '../../components/Product/Product'
 import Loader from  '../Loader/Loader'
+import Alert from '../../components/Alert/Alert'
 
 //styles
 import './Store.scss'
@@ -14,6 +15,7 @@ import './Store.scss'
 
 
 function Store({cart}){
+    const [domReady, setDomReady] = useState(false)
     const [isClickedAddProduct, setIsClickedAddProduct] = useState(false);
     const [products, setProducts] = useState(new Array());
     const [alert, setAlert] = useState(<></>);
@@ -39,18 +41,21 @@ function Store({cart}){
         .catch((err)=>{
             console.log(err)
         })
+        setDomReady(true)
     }, [])
     
+
 
     const addCartProduct = (e)=>{
         // cart.setCart(cart.cart.push({id: id, title: title, price: price, description: description, 
         //     category: category, image: image}));
         // console.log(cart.cart)
-
-        setAlert(<Alert className={`${showAlert ? 'alert-fade' : ''} 
-            ${deleteAlert ? 'alert-delete' : ''}`}>
-            Producto Agregado</Alert>);
-        ReactDOM.createPortal(alert, document.getElementById("store-main"));
+        console.log("producto agregado");
+        setAlert((prevState)=>{
+            return <Alert className={`${showAlert ? 'alert-fade' : ''} ${deleteAlert ? 'alert-delete'
+            : ''}`}>
+            Producto Agregado</Alert>
+        });
         setShowAlert(true);
         setTimeout(()=>{
             setDeleteAlert(true)
@@ -58,7 +63,6 @@ function Store({cart}){
                 setAlert(<></>)
             }, 2000);
         }, 3000)
-
     }
 
     const changeFormProductHandler = ({id, value})=>{
@@ -207,7 +211,8 @@ function Store({cart}){
                 {...element} clickHandler={addCartProduct}/>) : 
                 
                 <Loader/>}
-                
+
+                {alert != <></> && domReady ? ReactDOM.createPortal(alert, document.getElementById("store-main")) : <></>}
             </section>
         </main>
     )

@@ -10,7 +10,7 @@ function Product({id, title, price, description, category, image, clickHandler})
                 <h2 className="text-xl font-bold text-center">{title}</h2>
                 <p className="text-lg">${price}</p>
                 <Button type="button" content="Agregar 🛒" otherClassName="bg-black text-white 
-                text-lgfont-bold" onClick={clickHandler}/>
+                text-lgfont-bold" clickHandler={clickHandler}/>
             </div>
         </article>
     )
